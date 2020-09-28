@@ -7,22 +7,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class StringService {
 
-    private final StringRepository repo;
+    private StringRepository stringRepository;
 
     @Autowired
     public StringService(StringRepository repo){
-        this.repo = repo;
+        this.stringRepository = repo;
     }
 
     public Integer count(String text){
         if (text == null || text.isBlank()) return 0;
 
-        if (repo.alreadyAdded(text)){
-            return repo.getWordCount(text);
+        if (stringRepository.alreadyAdded(text)){
+            return stringRepository.getWordCount(text);
         }
 
         String[] words = text.split("\\s+");
-        repo.add(text, words.length);
+        stringRepository.add(text, words.length);
         return words.length;
     };
 

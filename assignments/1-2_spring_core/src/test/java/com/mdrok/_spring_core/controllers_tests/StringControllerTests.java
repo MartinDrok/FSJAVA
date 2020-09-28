@@ -5,6 +5,7 @@ import com.mdrok._spring_core.controllers.StringController;
 import com.mdrok._spring_core.repositories.StringRepository;
 import com.mdrok._spring_core.services.StringService;
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.times;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -51,6 +52,8 @@ public class StringControllerTests {
 
         // assert
         assertThat(realResult).isEqualTo(expectedResult);
+        Mockito.verify(stringService, times(1)).invert(input);
+
     }
 
     @Test
@@ -66,6 +69,7 @@ public class StringControllerTests {
 
         // assert
         assertThat(realResult).isEqualTo(expectedResult);
+        Mockito.verify(stringService, times(1)).invert(input);
     }
 
     @Test
@@ -81,6 +85,7 @@ public class StringControllerTests {
 
         // assert
         assertThat(realResult).isEqualTo(expectedResult);
+        Mockito.verify(stringService, times(1)).invert(input);
     }
 
     @Test
@@ -96,6 +101,7 @@ public class StringControllerTests {
 
         // assert
         assertThat(realResult).isEqualTo(expectedResult);
+        Mockito.verify(stringService, times(1)).capitalise(input);
     }
 
     @Test
@@ -111,6 +117,7 @@ public class StringControllerTests {
 
         // assert
         assertThat(realResult).isEqualTo(expectedResult);
+        Mockito.verify(stringService, times(1)).capitalise(input);
     }
 
     @Test
@@ -126,5 +133,6 @@ public class StringControllerTests {
 
         // assert
         assertThat(realResult).isEqualTo(expectedResult);
+        Mockito.verify(stringService, times(1)).capitalise(input);
     }
 }

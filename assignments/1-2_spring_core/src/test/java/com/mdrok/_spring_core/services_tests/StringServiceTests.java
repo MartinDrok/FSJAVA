@@ -5,6 +5,8 @@ import com.mdrok._spring_core.controllers.StringController;
 import com.mdrok._spring_core.repositories.StringRepository;
 import com.mdrok._spring_core.services.StringService;
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.times;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -42,13 +44,15 @@ public class StringServiceTests {
 
         Mockito.when(stringRepository.alreadyAdded(input)).thenReturn(true);
         Mockito.when(stringRepository.getWordCount(input)).thenReturn(expectedResult);
-        Mockito.when(stringRepository.add(input, expectedResult)).thenReturn(true);
 
         // act
         Integer realResult = stringService.count(input);
 
         // assert
         assertThat(realResult).isEqualTo(expectedResult);
+        Mockito.verify(stringRepository, times(1)).alreadyAdded(input);
+        Mockito.verify(stringRepository, times(1)).getWordCount(input);
+
     }
 
     @Test
@@ -57,14 +61,15 @@ public class StringServiceTests {
         String input = "hello there";
         Integer expectedResult = 2;
 
-        Mockito.when(stringRepository.alreadyAdded(input)).thenReturn(false);
-        Mockito.when(stringRepository.getWordCount(input)).thenReturn(expectedResult);
         Mockito.when(stringRepository.add(input, expectedResult)).thenReturn(true);
+        Mockito.when(stringRepository.alreadyAdded(input)).thenReturn(false);
 
         // act
         Integer realResult = stringService.count(input);
 
         // assert
         assertThat(realResult).isEqualTo(expectedResult);
+        Mockito.verify(stringRepository, times(1)).add(input, expectedResult);
+        Mockito.verify(stringRepository, times(1)).alreadyAdded(input);
     }
 }

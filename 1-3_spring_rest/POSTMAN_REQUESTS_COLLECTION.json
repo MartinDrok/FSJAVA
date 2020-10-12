@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"IBAN\": \"NLINGB0170123214155\",\r\n    \"balance\": 0.0,\r\n    \"holders\": [{\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\"\r\n    }]\r\n}",
+					"raw": "{\r\n    \"active\": true,\r\n    \"iban\": \"NLINGB012371345823423451\",\r\n    \"balance\": 0.0,\r\n    \"holders\": [{ }]\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -121,7 +121,7 @@
 			"response": []
 		},
 		{
-			"name": "get Holder",
+			"name": "get Holder by Account",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -143,7 +143,7 @@
 			"response": []
 		},
 		{
-			"name": "get all holders",
+			"name": "get all Holders by Account",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -165,13 +165,13 @@
 			"response": []
 		},
 		{
-			"name": "add Holder",
+			"name": "add Holder to Account",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\"\r\n}",
+					"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"gender\": \"uncommited\",\r\n    \"address\": {\r\n        \"street\": \"Somewherelane 5\",\r\n        \"zipCode\": \"4010 AA\",\r\n        \"city\": \"Little Village\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
